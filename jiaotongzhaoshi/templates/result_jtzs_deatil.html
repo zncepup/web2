@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>案件详情</title>
+</head>
+<body>
+<form>
+    <fieldset>
+        <legend>审判结果：</legend>
+        {% ifnotequal anli.Fine '0'%}
+                罚金：{{ anli.Fine }}元<br>
+             {% endifnotequal %}
+            {% ifnotequal anli.Surveillans 'unknown'%}
+                管制:{{ anli.Surveillans }}
+            {% endifnotequal %}
+            {% ifnotequal anli.Surveillans_huanxing 'unknown'%}
+                缓刑:{{ anli.Surveillans_huanxing }}
+            {% endifnotequal %}
+            {% ifnotequal anli.Dentention 'unknown'%}
+                拘役:{{ anli.Dentention }}
+            {% endifnotequal %}
+            {% ifnotequal anli.Dentention_huanxing 'unknown'%}
+                缓刑:{{ anli.Dentention_huanxing }}
+            {% endifnotequal %}
+
+            {% ifnotequal anli.FixtedTerm 'unknown'%}
+                有期徒刑:{{ anli.FixtedTerm }}
+            {% endifnotequal %}
+            {% ifnotequal anli.FixtedTerm_huanxing 'unknown'%}
+                缓刑:{{ anli.FixtedTerm_huanxing }}
+            {% endifnotequal %}
+    </fieldset>
+    <fieldset>
+        <legend>判决书内容：</legend>
+        {% for line in file %}
+            {{ line }}<br>
+        {% endfor %}
+    </fieldset>
+</form>
+</body>
+</html>

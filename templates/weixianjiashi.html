@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>类案检索(危险驾驶罪)</title>
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/index_1.css">
+    <script src="static/js/jquery.min.js"></script>
+	<script src="static/js/bootstrap.min.js"></script>
+    <script src="static/js/address.js"></script>
+    <script src="static/js/distpicker.data.js"></script>
+    <script src="static/js/distpicker.js"></script>
+    <script src="static/js/main.js"></script>
+</head>
+<body>
+<div id="wrapper">
+    <div id="sidebar">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand">
+                <a href="#">罪名</a>
+            </li>
+            <li>
+                <a href="wxjs">危险驾驶罪</a>
+            </li>
+            <li>
+                <a href="jtzs">交通肇事罪</a>
+            </li>
+        </ul>
+    </div>
+    <div id="main-right">
+        <div id="rigth-top">
+            <h1>案件检索系统(危险驾驶罪)</h1>
+        </div>
+        <div id="right-left">
+            <form role="form" action="/beginsearch">{% csrf_token %}
+                <label>危害行为(情节)：</label>
+                <div id="weihaixingwei">
+                    <table class="table table-condensed" >
+                    <tbody>
+                    <tr>
+                        <td>
+                            <div id="danyuange">
+                                <label for="jiujia">酒驾:</label>
+                                <select class="form-control input-sm col-sm" id="jiujia">
+                                  <option></option>
+                                  <option>是</option>
+                                  <option>否</option>
+                                </select>
+                            </div>
+                        </td>
+                        <td>
+                            <div id="danyuange">
+                                <label for="zuijia">醉驾:</label>
+                                <select class="form-control input-sm col-sm" id="zuijia">
+                                  <option></option>
+                                  <option>是</option>
+                                  <option>否</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div id="danyuange">
+                                <label for="chaosu">超速:</label>
+                                <select class="form-control input-sm col-sm" id="chaosu">
+                                  <option></option>
+                                  <option>是</option>
+                                  <option>否</option>
+                                </select>
+                            </div>
+                        </td>
+                        <td>
+                            <div id="danyuange">
+                                <label for="chaozai">超载:</label>
+                                <select class="form-control input-sm col-sm" id="chaozai">
+                                  <option></option>
+                                  <option>是</option>
+                                  <option>否</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                       <td>
+                            <div id="danyuange">
+                                <label for="zhuizhujingshi">追逐竞驶:</label>
+                                <select class="form-control input-sm col-sm" id="zhuizhujingshi">
+                                  <option></option>
+                                  <option>是</option>
+                                  <option>否</option>
+                                </select>
+                            </div>
+                        </td>
+                        <td>
+                            <div id="danyuange">
+                                <label for="weixianpinyunshu">危险品运输:</label>
+                                <select class="form-control input-sm col-sm" id="weixianpinyunshu">
+                                  <option></option>
+                                  <option>是</option>
+                                  <option>否</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+
+                    </tbody>
+                </table>
+                </div>
+                <label>主体（被告人）：</label>
+                <div id="zhuti">
+                    <label class="checkbox-inline">
+                        <input type="checkbox" id="qianke"> 前科
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" id="leifan"> 累犯
+                    </label>
+                    <br><br>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" id="zishou"> 自首
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" id="tanbai"> 坦白
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" id="ligong"> 立功
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" id="renzui"> 认罪
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" id="huizui"> 悔罪
+                    </label>
+                </div>
+                <label>车辆类型：</label>
+                <div id="cheliangleixing">
+                    <label class="checkbox-inline">
+                        <input type="checkbox" id="keche"> 客车
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" id="motuoche"> 摩托车
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" id="huoche"> 货车
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" id="jiaoche"> 轿车
+                    </label>
+                    <br><br>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" id="diandongchejidong"> 电动车-机动
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" id="baofeiche"> 报废车
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" id="taopaiche"> 套牌车
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" id="qitajidongcheliang"> 其他机动车辆
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" id="feijidongche"> 非机动车
+                    </label>
+                </div>
+                <label>其他:</label>
+                <div id="qita">
+                    <form class="form-inline">
+                      <div id="distpicker5">
+                          <div class="form-group">
+                              <label style="float: left">地区：</label>
+                          </div>
+                        <div class="form-group">
+                            <select class="form-control input-sm" id="province10"></select>
+                        </div>
+                        <div class="form-group">
+
+                            <select class="form-control input-sm" id="city10"></select>
+                        </div>
+                        <div class="form-group">
+
+                          <select class="form-control input-sm" id="district10"></select>
+                        </div>
+                      </div>
+                </form>
+                    <div style="font: 0px/0px sans-serif;clear: both;display: block"> </div><!--here-->
+                </div>
+                <div id="r-l-b">
+                    <button type="button" class="btn btn-default" onclick="aja()">搜索</button>
+                </div>
+
+            </form>
+        </div>
+        <div id="right-rigth">
+        <label>搜索结果：</label>
+        </div>
+    </div>
+</div>
+
+<script>
+    function aja() {
+        var sheng=$("#province10 option:selected").text();
+        var shi=$("#city10 option:selected").text();
+        var xian=$("#district10 option:selected").text();
+        var jiujia=$("#jiujia option:selected").text();
+        var zuijia=$("#zuijia option:selected").text();
+        var chaosu=$("#chaosu option:selected").text();
+        var chaozai=$("#chaozai option:selected").text();
+        var zhuizhujingshi=$("#zhuizhujingshi option:selected").text();
+        var weixianpinyunshu=$("#weixianpinyunshu option:selected").text();
+        var qianke=$("#qianke").is(':checked');
+        var leifan=$("#leifan").is(':checked');
+        var zishou=$("#zishou").is(':checked');
+        var tanbai=$("#tanbai").is(':checked');
+        var ligong=$("#ligong").is(':checked');
+        var renzui=$("#renzui").is(':checked');
+        var huizui=$("#huizui").is(':checked');
+        var keche=$("#keche").is(':checked');
+        var motuoche=$("#motuoche").is(':checked');
+        var huoche=$("#huoche").is(':checked');
+        var jiaoche=$("#jiaoche").is(':checked');
+        var diandongchejidong=$("#diandongchejidong").is(':checked');
+        var baofeiche=$("#baofeiche").is(':checked');
+        var taopaiche=$("#taopaiche").is(':checked');
+        var qitajidongcheliang=$("#qitajidongcheliang").is(':checked');
+        var feijidongche=$("#feijidongche").is(':checked');
+{#        ur='jubu/?jiujia='+jiujia+'&zuijia='+zuijia+'&chaosu='+asdasd+'&chaozai='+chaozai#}
+{#        +'&zhuizhujingshi='+zhuizhujingshi;#}
+
+        $('#right-rigth').load('jubu_wxjs/?qianke='+qianke+'&jiujia='+jiujia+'&zuijia='+zuijia+'&chaosu='+chaosu+'&chaozai='+chaozai+'&zhuizhujingshi='+zhuizhujingshi+'&weixianpinyunshu='+weixianpinyunshu+'&leifan='+leifan+'&zishou='+zishou+'&tanbai='+tanbai+'&ligong='+ligong+'&renzui='+renzui+'&huizui='+huizui+'&keche='+keche+'&motuoche='+motuoche+'&huoche='+huoche+'&jiaoche='+jiaoche+'&diandongchejidong='+diandongchejidong+'&baofeiche='+baofeiche+'&taopaiche='+taopaiche+'&qitajidongcheliang='+qitajidongcheliang+'&feijidongche='+feijidongche+'&sheng='+sheng+'&shi='+shi+'&xian='+xian);
+
+
+    }
+</script>
+
+</body>
+</html>

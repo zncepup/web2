@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>rseults</title>
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <script src="static/js/jquery.min.js"></script>
+	<script src="static/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="static/css/index_1.css">
+    <script src="stati/js/Chart.js"></script>
+</head>
+<body>
+<label>搜索结果：</label>
+<ul id="myTab" class="nav nav-tabs">
+	<li class="active"><a href="#anli" data-toggle="tab">案例</a></li>
+	<li><a href="#tongji" data-toggle="tab">统计</a></li>
+</ul>
+
+<div id="myTabContent" class="tab-content">
+	<div class="tab-pane fade in active" id="anli">
+		 <label>共{{ n }}条搜索结果：</label><br>
+        {% for anli in x %}
+        <a href="result_wxjs/?id={{ anli.id }}" target="_blank">{{ anli.filename }}</a><br>
+             {% ifnotequal anli.Fine '0'%}
+                罚金：{{ anli.Fine }}元<br>
+             {% endifnotequal %}
+            {% ifnotequal anli.Surveillans 'unknown'%}
+                管制:{{ anli.Surveillans }}
+            {% endifnotequal %}
+            {% ifnotequal anli.Surveillans_huanxing 'unknown'%}
+                缓刑:{{ anli.Surveillans_huanxing }}
+            {% endifnotequal %}
+            {% ifnotequal anli.Dentention 'unknown'%}
+                拘役:{{ anli.Dentention }}
+            {% endifnotequal %}
+            {% ifnotequal anli.Dentention_huanxing 'unknown'%}
+                缓刑:{{ anli.Dentention_huanxing }}
+            {% endifnotequal %}
+
+            {% ifnotequal anli.FixtedTerm 'unknown'%}
+                有期徒刑:{{ anli.FixtedTerm }}
+            {% endifnotequal %}
+            {% ifnotequal anli.FixtedTerm_huanxing 'unknown'%}
+                缓刑:{{ anli.FixtedTerm_huanxing }}
+            {% endifnotequal %}
+<br>
+        {% endfor %}
+	</div>
+	<div class="tab-pane fade" id="tongji">
+
+        <canvas id="myChart" width="400" height="400"></canvas>
+	</div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){
+  var ctx = $("#myChart").get(0).getContext("2d");
+    var myNewChart = new Chart(ctx);
+    new Chart(ctx).PolarArea(data,options);
+  })
+</script>
+
+</body>
+</html>
